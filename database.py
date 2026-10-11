@@ -1,3 +1,5 @@
+import os
+
 from django.db.backends import postgresql
 from fastapi import FastAPI,Depends
 from sqlalchemy import create_engine
@@ -7,8 +9,8 @@ from typing import Annotated
 
 Base = declarative_base()
 
-
-engine = create_engine("postgresql://postgres.caidvnxutiuhemnlmawr:Passcoderakibdeactive24@aws-0-ap-northeast-1.pooler.supabase.com:5432/postgres")
+DATABASE_URL = os.getenv("DATABASE_URL")
+engine = create_engine(DATABASE_URL)
 
 sessionlocal = sessionmaker(autoflush = False, autocommit = False, bind = engine)
 
