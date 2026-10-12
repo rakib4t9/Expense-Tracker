@@ -7,15 +7,12 @@ from models import User
 from models import Base,Transaction
 from router.auth import router, db_dependency, get_current_user
 from typing import Annotated,Literal, Optional
-from mangum import Mangum
 
 app = FastAPI()
 
 app.include_router(router)
 
-handler = Mangum(app)
-
-# Base.metadata.create_all(bind = engine)
+Base.metadata.create_all(bind = engine)
 
 
 
