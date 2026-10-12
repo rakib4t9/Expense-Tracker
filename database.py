@@ -1,4 +1,3 @@
-from django.db.backends import postgresql
 from fastapi import FastAPI,Depends
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
