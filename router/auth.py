@@ -61,7 +61,7 @@ def  get_current_user(token : Annotated[str, Depends(OAuth2_bearer)], db : db_de
         
         if username is None or user_id is None:
             raise HTTPException(status_code=404, detail='User not found')
-        return {'usernamr': username , 'id': user_id}
+        return {'username': username , 'id': user_id}
     except:
         raise HTTPException(status_code=404, detail='User not found')
     
@@ -82,8 +82,11 @@ def register_user(new_user : CreateUsers, db : db_dependency):
     db.commit()
     db.refresh(user_model)
     
-    return JSONResponse(status_code=201, content={"message":"User created Successfuly"})
-
+    return{
+        "id": user_model.id,
+        "user_name": user_model.user_name,
+        "email": user_model.email
+    }
 
 @router.post("/auth/login")
 def user_login(db: db_dependency,from_data : Annotated[OAuth2PasswordRequestForm, Depends()]):
