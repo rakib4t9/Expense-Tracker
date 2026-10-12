@@ -1,0 +1,8 @@
+[
+  "test/test_main.py::test_create_transaction",
+  "test/test_main.py::test_delete_transaction",
+  "test/test_main.py::test_get_transactions",
+  "test/test_main.py::test_specific_transaction",
+  "test/test_main.py::test_transaction",
+  "test/test_main.py::test_update_transaction"
+]

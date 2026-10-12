@@ -2,8 +2,10 @@ from fastapi.testclient import TestClient
 from main import app
 from fastapi import status
 from router.auth import get_current_user
-from database import sessionlocal
+from database import Sessionlocal
 from models import Transaction,User
+
+
 client = TestClient(app)
 
 def override_get_current_user():
@@ -14,7 +16,7 @@ def override_get_current_user():
 
 def test_transaction():
     
-    db = sessionlocal()
+    db = Sessionlocal()
     
     user = db.query(Transaction).filter(Transaction.owner_id == 1).first()
     if not user:

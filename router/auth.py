@@ -3,7 +3,7 @@ from fastapi.security import OAuth2PasswordBearer,OAuth2PasswordRequestForm
 from pydantic import BaseModel
 from datetime import datetime, timedelta,timezone
 from passlib.context import CryptContext
-from database import sessionlocal
+from database import Sessionlocal
 from models import User
 from sqlalchemy.orm import Session
 from fastapi.responses import JSONResponse
@@ -27,7 +27,7 @@ class CreateUsers(BaseModel):
     password : str
     
 def get_db():
-    db = sessionlocal()
+    db = Sessionlocal()
     try:
         yield db
     finally:
