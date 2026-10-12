@@ -1,11 +1,12 @@
-passlib[bcrypt]
 fastapi
-pydantic
+uvicorn
+sqlalchemy
+psycopg[binary]
 psycopg2-binary
+pydantic
+passlib[bcrypt]
 python-jose
 python-multipart
-SQLAlchemy
-uvicorn
 pytest
 httpx
 pytest-asyncio
